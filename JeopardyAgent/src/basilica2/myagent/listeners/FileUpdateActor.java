@@ -73,7 +73,8 @@ public class FileUpdateActor extends BasilicaAdapter
 			
 /*
 		try {
-		URL url = new URL("http://bazaar.lti.cs.cmu.edu/jeopardyout");
+		URL url = new URL("http://bazaar.lti.cs.cmu.edu/jeopardyout");		
+		// URL url = new URL("https://jeopardylabs.com/play/wgu-welcome-jeopardy-3");
 		URLConnection connection = url.openConnection();
 		connection.setDoOutput(true); 
         PrintStream outStream = new PrintStream(connection.getOutputStream());  
