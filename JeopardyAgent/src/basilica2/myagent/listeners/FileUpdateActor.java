@@ -66,6 +66,8 @@ public class FileUpdateActor extends BasilicaAdapter
 		try{fileContent = readFile (pathIn, charSet); }
 		catch(IOException e) {e.printStackTrace();}
 		
+		fileContent = fileContent.replaceAll("___", "Meredith!");
+		
 		try{Files.write(pathOut,fileContent.getBytes(charSet)); }
 		catch(IOException e) {e.printStackTrace();}
 			

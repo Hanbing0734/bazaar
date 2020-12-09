@@ -263,8 +263,7 @@ ul.tab li a:focus, .active {
             socket.emit('snoop', room, id);
             $('input,textarea').prop('disabled', true);
 	}
-        $('#roomname').text(room);
-        document.getElementById('myIframe').src =  "https://erebor.lti.cs.cmu.edu:9001/p/" +  room + "?showChat=false&noColors=false";
+        $('#roomname').text(room); 
         });
 	
 
@@ -520,8 +519,6 @@ ul.tab li a:focus, .active {
 <!-- Edits by @sreechas for multiple tabs -->
     <ul class="tab">
     <li><a href="#" class="tablinks" onclick="openTab(event, 'Sharing Space')">Sharing Space</a></li>
-    <li><a href="#" class="tablinks" onclick="openTab(event, 'Collaborative Notes')">Collaborative Notes</a></li>
-    <li><a href="#" class="tablinks" onclick="openTab(event, 'Spreadsheet')">Spreadsheet</a></li>
     </ul>
 
 
@@ -535,21 +532,6 @@ ul.tab li a:focus, .active {
               <input id="image_url_input" value=""  placeholder="Want to share an image? Paste its URL here!"/>
           </div>
           <div id="image_url_input_button_div"><input class="button" type="button" id="imagesend" value="Share Image URL" /></div>
-      </div>
-    </div>
-
-   <div id="Collaborative Notes" class="tabcontent">
-      <div id="image_container" class="container">
-        <div id="images" class="scrollable"><iframe id= "myIframe" src="https://docs.google.com/document/d/e/2PACX-1vRw6K3tHR5iNAmqnLU3WCcaygQcs0aq9MWBRWy-RfmYoy78bDVrmnumqC4aw1x83B4xCyalEAdc1W3M/pub" width="100%" height="100%"></iframe></div>
-      </div>
-    </div>
-
-
-    <div id="Spreadsheet" class="tabcontent">
-      <div id="image_container" class="container">
-        <!--<div id="images" class="scrollable"><iframe src="https://docs.google.com/spreadsheets/d/1ZRP9_ypVZOEQ_hASea2sR8e52MkendyR1YHBlBYWrvg/edit#gid=0" width="100%" height="100%"></iframe></div>-->
-        <div id="images" class="scrollable"><iframe src="https://docs.google.com/spreadsheets/d/1OoLD9dZaVfLJz-0X-OQ3WnrI97G9syUKGEJWDR2Mxdg/edit?ts=57c83646#gid=298683489" width="100%" height="100%"></iframe></div>
-        <!--<div id="images" class="scrollable"><iframe id="spreadsheet" src="" width="100%" height="100%"></iframe></div>-->
       </div>
     </div>
 
@@ -580,11 +562,11 @@ ul.tab li a:focus, .active {
         </div>
         <div id="controls" class="control">
             <div id="message_div"> <textarea id="data"></textarea></div>
-            <div id="messagebutton_div">
-                <input class="button" type="button" id="datasend" value="Send Message" />
-                <input class="button" type="button" id="ready_button" value="I'm Ready"/>
-            </div>
-            <div class="blinker">Click the "I'm Ready" button when you are ready to move on to the next step.</div>
+            <!--  <div id="messagebutton_div"> -->
+               <!--  <input class="button" type="button" id="datasend" value="Send Message" /> -->
+                <!--  <input class="button" type="button" id="ready_button" value="Ready"/> -->
+            <!--  </div> -->
+            <!--  <div class="blinker">Click the "Ready" button when you are ready to move on to the next step.</div> -->
             <div><input class="button" type="button" id="conv_message" value="Download Discussion Log" onClick="showConvText();"/></div>
         </div>
     </div>
