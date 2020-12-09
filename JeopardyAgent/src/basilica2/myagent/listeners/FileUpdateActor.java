@@ -3,6 +3,8 @@ package basilica2.myagent.listeners;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.*; 
+import java.net.*; 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -59,21 +61,37 @@ public class FileUpdateActor extends BasilicaAdapter
 			try{fileSuffix = getProperties().getProperty("fileSuffix", ".html");}
 			catch(Exception e) {e.printStackTrace();}		
 		}
-		// fileContent = readFile (filePath + fileName + fileSuffix, charSet); 
 		pathIn = filePathIn + fileNameIn + fileSuffix; 
 		Path pathOut = Paths.get(filePathOut + fileNameOut + fileSuffix); 
 		try{fileContent = readFile (pathIn, charSet); }
 		catch(IOException e) {e.printStackTrace();}
 		
-		// Files.write(pathOut, fileContent.getBytes(charSet),StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING );
-		// Files.newBufferedWriter(pathOut);
-		// Files.write(pathOut,fileContent.getBytes(charSet),StandardOpenOption.CREATE);
-		// Files.write(pathOut,fileContent.getBytes(charSet));
 		try{Files.write(pathOut,fileContent.getBytes(charSet)); }
 		catch(IOException e) {e.printStackTrace();}
+			
+/*
+		try {
+		URL url = new URL("http://bazaar.lti.cs.cmu.edu/jeopardyout");
+		URLConnection connection = url.openConnection();
+		connection.setDoOutput(true); 
+        PrintStream outStream = new PrintStream(connection.getOutputStream());  
+        outStream.write(fileContent.getBytes(charSet));    
+	    } catch (MalformedURLException me) {
+	        System.err.println("MalformedURLException: " + me);
+	    } catch (IOException ioe) {
+	        System.err.println("IOException: " + ioe);
+	    } catch (Exception e) {
+	        System.err.println("Exception: " + e);
+	    }
+		finally {
+			System.err.println("FileUpdateActor: write to URL completed");
+		}
+*/	
+		
 		System.err.println("FileUpdateActor: constructor completed"); 
 	}
-	
+
+		
 	static String readFile(String path, Charset encoding)
 			  throws IOException
 	{
