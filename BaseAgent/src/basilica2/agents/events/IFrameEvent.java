@@ -45,12 +45,12 @@ public class IFrameEvent extends Event {
     private String elementId = ""; 
 	public enum iframeEventType  
 	{
-		click, escape, spacebar;
+		start, click, escape, spacebar;
 	}
     private iframeEventType eventType; 
     private String updateContent; 
 
-    public IFrameEvent(Component s, String iframe, String element, iframeEventType type, String content) {
+    public IFrameEvent(Component s, String iframe, iframeEventType type, String element, String content) {
         super(s);
         iframeId = iframe;
         elementId = element; 
@@ -63,12 +63,16 @@ public class IFrameEvent extends Event {
         return iframeId;
     }
 
-    public String getelementId() {
+    public String getElementId() {
         return elementId;
     }
 
-    public iframeEventType getIframeEventType() {
+    public iframeEventType getEventType() {
         return eventType;
+    }
+
+    public String getEventTypeString() {
+        return getEventType().name();
     }
 
     public String getUpdateContent() {

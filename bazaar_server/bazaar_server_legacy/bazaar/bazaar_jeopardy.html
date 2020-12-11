@@ -292,27 +292,18 @@ ul.tab li a:focus, .active {
 	
 	
     // listener, whenever the server emits 'updateIframe'
-	// socket.on('updateIframe', function (iframeId, elementId, updateType, content) 
-	socket.on('updateIframe', function (iframeId, elementId) 
+	// socket.on('updateIframe', function (iframeId, updateType, elementId, content) 
+	socket.on('updateIframe', function (iframeId, updateType, elementId) 
 	{
-		console.log("bazaar_jeopardy.html, updateIframe() -- enter"); 
-		// $('#wgu_jeopardy').contents().getElementById("submit").click();
-		
+		console.log("bazaar_jeopardy.html, updateIframe() -- enter"); 		
 		var iframeWindow = window.frames[0]; 
-		var element = iframeWindow.document.getElementsByClassName("submit").item(0); 
-		console.log("element: " + element); 
-		element.click(); 
-		// element.dispatchEvent(new Event('click'));
 		
+		if (updateType == "start") {
+			console.log("updateType == start");
+			var element = iframeWindow.document.getElementsByClassName("submit").item(0);
+			element.click();
+		} 
 		
-        // appendMessage(new Date(), 'AlexTrebeck', "Got to bazaar_jeopardy.html updateIframe");
-		
-		// if (updateType == "click") 
-		// {
-		//	console.log("updateType == click");
-		//	// $('#wgu_jeopardy').contents().getElementById("elementId").click(); 
-		//	$('#wgu_jeopardy').contents().getElementById("submit").click(); 
-		// } 
 		console.log("bazaar_jeopardy.html, updateIframe() -- exit"); 
 	});
 	

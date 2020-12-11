@@ -61,8 +61,8 @@ public class IFrameUpdateWatcher extends BasilicaAdapter
 	public void preProcessEvent(InputCoordinator source, Event e)
 	{
 		System.err.println("IFrameUpdateWatcher: preProcessEvent - enter");
-		IFrameEvent.iframeEventType eventType = IFrameEvent.iframeEventType.valueOf("click"); 
-		IFrameEvent iframeEvent = new IFrameEvent(source,"wgu_jeopardy","cell-293248304",eventType,"");
+		IFrameEvent.iframeEventType eventType = IFrameEvent.iframeEventType.valueOf("start"); 
+		IFrameEvent iframeEvent = new IFrameEvent(source,"wgu_jeopardy",eventType,"","");
 		source.pushEvent(iframeEvent);
 		System.err.println("IFrameUpdateWatcher: preProcessEvent - exit");
 	}

@@ -243,7 +243,7 @@ public class WebsocketChatClient extends Component implements ChatClient
 	{
 		System.err.println("WebsocketChatClient: sendIFrameEvent");
 		// socket.emit("updateIframe", ife.getIframeId(), ife.getelementId(), ife.getIframeEventType().name(), ife.getUpdateContent());
-		socket.emit("updateIframe", ife.getIframeId(), ife.getelementId());
+		socket.emit("updateIframe", ife.getIframeId(), ife.getEventTypeString(), ife.getElementId());
 	}
 
 	public void setCallbacks() {
