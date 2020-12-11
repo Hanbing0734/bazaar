@@ -296,14 +296,14 @@ ul.tab li a:focus, .active {
 	socket.on('updateIframe', function (iframeId, updateType, elementId) 
 	{
 		console.log("bazaar_jeopardy.html, updateIframe() -- enter"); 		
-		var iframeWindow = window.frames[0]; 
-		
+		var iframeWindow = window.frames[0]; 	  // EXTEND THIS TO LOOK UP BY iframeId	
+			
 		if (updateType == "start") {
 			console.log("updateType == start");
 			var element = iframeWindow.document.getElementsByClassName("submit").item(0);
 			element.click();
 		} 
-		
+			
 		console.log("bazaar_jeopardy.html, updateIframe() -- exit"); 
 	});
 	

@@ -1,4 +1,4 @@
-package basilica2.agents.listeners;
+package basilica2.myagent.listeners;
 
 import edu.cmu.cs.lti.basilica2.core.Event;
 
@@ -19,6 +19,7 @@ import basilica2.agents.events.priority.PriorityEvent.Callback;
 import basilica2.agents.events.IFrameEvent;
 import basilica2.agents.listeners.PresenceWatcher;
 import basilica2.agents.listeners.plan.StepHandler;
+import basilica2.agents.listeners.BasilicaAdapter;
 import edu.cmu.cs.lti.basilica2.core.Component;
 import edu.cmu.cs.lti.basilica2.core.Event;
 import edu.cmu.cs.lti.basilica2.core.Agent;

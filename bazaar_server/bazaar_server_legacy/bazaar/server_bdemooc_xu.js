@@ -625,7 +625,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on('updateIframe', function (iframeId, updateType, elementId) 
 	{	
 		console.log("server_bdemooc_xu.js, socket.on('updateIframe', ...) -- enter"); 
-		logMessage(socket, "iframeid-"+iframeId+" updateType-"+updateType, "≈");
+		// logMessage(socket, "iframeid-"+iframeId+" updateType-"+updateType, "≈");
 		io.sockets.in(socket.room).emit('updateIframe', iframeId, updateType, elementId);
 		console.log("server_bdemooc_xu.js, socket.on('updateIframe', ...) -- exit"); 
 	});
