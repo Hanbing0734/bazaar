@@ -29,6 +29,7 @@ import basilica2.agents.events.PresenceEvent;
 import basilica2.agents.events.PrivateMessageEvent;
 import basilica2.agents.events.ReadyEvent;
 import basilica2.agents.events.WhiteboardEvent;
+import basilica2.agents.events.IFrameEvent;
 import edu.cmu.cs.lti.basilica2.core.Agent;
 import edu.cmu.cs.lti.basilica2.core.Component;
 import edu.cmu.cs.lti.basilica2.core.Event;
@@ -149,6 +150,21 @@ public class WebsocketChatClient extends Component implements ChatClient
 				e1.printStackTrace();
 			}
 		}
+		else if(e instanceof IFrameEvent)
+		{
+			System.err.println("WebsocketChatClient: received IFrameEvent");
+			IFrameEvent ife = (IFrameEvent) e;
+			try
+			{
+				sendIFrameEvent(ife);
+			}
+			catch (Exception e1)
+			{
+				System.err.println("Couldn't send IFrameEvent: "+ife);
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 		//TODO: private messages? "beeps"?
 
 	}
@@ -221,6 +237,13 @@ public class WebsocketChatClient extends Component implements ChatClient
 			socket.emit("global_ready", ready?"ready":"unready");
 		else
 			socket.emit("ready", ready?"ready":"unready");
+	}
+
+	protected void sendIFrameEvent(IFrameEvent ife)
+	{
+		System.err.println("WebsocketChatClient: sendIFrameEvent");
+		// socket.emit("updateIframe", ife.getIframeId(), ife.getelementId(), ife.getIframeEventType().name(), ife.getUpdateContent());
+		socket.emit("updateIframe", ife.getIframeId(), ife.getelementId());
 	}
 
 	public void setCallbacks() {

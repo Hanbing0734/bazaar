@@ -619,6 +619,21 @@ io.sockets.on('connection', function (socket) {
 		logMessage(socket, "global "+data, "ready");
 		io.sockets.in(socket.room).emit('update_global_ready', data);
 	});
+	
+	// when the client emits 'sendchat', this listens and executes
+	// socket.on('updateIframe', function (data, iframeId, elementID, updateType, content) 
+	socket.on('updateIframe', function (iframeId, elementId) 
+	{	
+		console.log("server_bdemooc_xu.js, socket.on('updateIframe', ...) -- enter"); 
+		logMessage(socket, iframeId, "updateIframe");
+		// io.sockets.in(socket.room).emit('updateIframe', data);
+		// io.sockets.in(socket.room).emit('updateIframe', 'wgu_jeopardy', 'cell-293248304', 'click', '');
+		// io.sockets.in(socket.room).emit('updateIframe', "wgu_jeopardy", "cell-293248304", "click", "");
+		// io.sockets.in(socket.room).emit('updateIframe', 'wgu_jeopardy'', "submit");
+		io.sockets.in(socket.room).emit('updateIframe', iframeId, elementId);
+		// io.sockets.in(socket.room).emit('updatechat', socket.username, "chat to bazaar_jeopardy.html"); // test result: this is method is getting to bazaar_jeopardy.html chat
+		console.log("server_bdemooc_xu.js, socket.on('updateIframe', ...) -- exit"); 
+	});
 
 	socket.on('switchRoom', function(newroom)
 	{
