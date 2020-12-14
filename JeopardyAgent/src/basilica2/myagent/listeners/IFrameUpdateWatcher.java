@@ -62,11 +62,53 @@ public class IFrameUpdateWatcher extends BasilicaAdapter
 	public void preProcessEvent(InputCoordinator source, Event e)
 	{
 		System.err.println("IFrameUpdateWatcher: preProcessEvent - enter");
+		
+		/**
 		IFrameEvent.iframeEventType eventType = IFrameEvent.iframeEventType.valueOf("start"); 
 		IFrameEvent iframeEvent = new IFrameEvent(source,"wgu_jeopardy",eventType,"","");
-		source.pushEvent(iframeEvent);
+		source.pushEvent(iframeEvent);	
+		*/
+		
+		// Start the game as soon as the agent is present 
+		/**
+		if (e instanceof PresenceEvent && isAgentName(((PresenceEvent) e).getUsername())) {
+			IFrameEvent.iframeEventType eventType = IFrameEvent.iframeEventType.valueOf("start"); 
+			IFrameEvent iframeEvent = new IFrameEvent(source,"wgu_jeopardy",eventType,"","");
+			source.pushEvent(iframeEvent);			
+		}
+		*/ 
+		
+		// Start the game as soon as the agent is present 
+		/**
+		if (e instanceof PresenceEvent) {
+			System.err.println("IFrameUpdateWatcher: PresenceEvent detected");
+			if (isAgentName(((PresenceEvent) e).getUsername())) {
+				System.err.println("IFrameUpdateWatcher: PresenceEvent detected, agent is the Tutor");
+				IFrameEvent.iframeEventType eventType = IFrameEvent.iframeEventType.valueOf("start"); 
+				IFrameEvent iframeEvent = new IFrameEvent(source,"wgu_jeopardy",eventType,"","");
+				source.pushEvent(iframeEvent);	
+			}
+		}
+		*/
+
+		if (e instanceof PresenceEvent) {
+			System.err.println("IFrameUpdateWatcher: PresenceEvent detected");
+			// if (isAgentName(((PresenceEvent) e).getUsername())) {
+				// System.err.println("IFrameUpdateWatcher: PresenceEvent detected, agent is the Tutor");
+				IFrameEvent.iframeEventType eventType = IFrameEvent.iframeEventType.valueOf("start"); 
+				IFrameEvent iframeEvent = new IFrameEvent(source,"wgu_jeopardy",eventType,"","");
+				source.pushEvent(iframeEvent);	
+			// }
+		}
+		
 		System.err.println("IFrameUpdateWatcher: preProcessEvent - exit");
 	}
+
+	public boolean isAgentName(String from)
+	{
+		return from.trim().contains(getAgent().getUsername().trim()) || from.contains("Tutor") || from.trim().contains(System.getProperty("loginHandle", "Tutor"));
+	}
+	
 	
 	/**
 	 * @return the classes of events that this Preprocessor cares about
